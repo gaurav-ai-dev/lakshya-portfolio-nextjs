@@ -1,26 +1,749 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Premium Design System for Marketing Portfolio */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 220 30% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 220 25% 96%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    /* ✅ OPTION 2 (Amber → Burnt Orange) */
+    --primary: 24 94% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 92%;
+    --secondary-foreground: 220 20% 20%;
+
+    --muted: 220 20% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Keep accent warm + aligned (no blue) */
+    --accent: 18 90% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 150 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 90% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 88%;
+    --input: 220 20% 90%;
+    --ring: 24 94% 50%;
+
+    --radius: 0.75rem;
+
+    /* ✅ OPTION 2 gradients */
+    --gradient-primary: linear-gradient(135deg,
+        hsl(32 95% 52%) 0%,
+        hsl(24 94% 50%) 55%,
+        hsl(18 90% 45%) 100%);
+
+    /* Secondary / warm / cool / vibrant updated to match (no blue) */
+    --gradient-secondary: linear-gradient(135deg,
+        hsl(40 96% 55%) 0%,
+        hsl(28 95% 52%) 50%,
+        hsl(18 90% 45%) 100%);
+
+    --gradient-warm: linear-gradient(135deg,
+        hsl(32 95% 52%) 0%,
+        hsl(18 90% 45%) 50%,
+        hsl(8 85% 42%) 100%);
+
+    --gradient-cool: linear-gradient(135deg,
+        hsl(30 95% 52%) 0%,
+        hsl(22 90% 46%) 55%,
+        hsl(18 85% 42%) 100%);
+
+    --gradient-vibrant: linear-gradient(135deg,
+        hsl(35 95% 54%) 0%,
+        hsl(24 94% 50%) 50%,
+        hsl(12 88% 44%) 100%);
+
+    --gradient-dark: linear-gradient(135deg, hsl(220, 20%, 10%) 0%, hsl(220, 25%, 20%) 100%);
+    --gradient-light: linear-gradient(135deg, hsl(220, 25%, 98%) 0%, hsl(260, 20%, 97%) 100%);
+
+    /* Tabs */
+    --gradient-tab: var(--gradient-primary);
+    --gradient-tab-hover: linear-gradient(135deg,
+        hsl(32 95% 56%) 0%,
+        hsl(24 94% 54%) 55%,
+        hsl(18 90% 49%) 100%);
+
+    /* Icon gradient backgrounds (warm + neutral) */
+    --gradient-icon-1: linear-gradient(135deg,
+        hsl(32 95% 94%) 0%,
+        hsl(24 94% 92%) 50%,
+        hsl(18 90% 94%) 100%);
+    --gradient-icon-2: linear-gradient(135deg,
+        hsl(45 95% 92%) 0%,
+        hsl(32 95% 92%) 50%,
+        hsl(24 94% 93%) 100%);
+    --gradient-icon-3: linear-gradient(135deg,
+        hsl(18 90% 92%) 0%,
+        hsl(10 85% 93%) 50%,
+        hsl(32 95% 94%) 100%);
+
+    /* ✅ Section background mesh updated (no blue/purple) */
+    --bg-section-mesh:
+      radial-gradient(at 20% 30%, hsl(32 95% 52% / 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 20%, hsl(24 94% 50% / 0.10) 0px, transparent 50%),
+      radial-gradient(at 40% 80%, hsl(18 90% 45% / 0.06) 0px, transparent 50%),
+      radial-gradient(at 90% 70%, hsl(40 96% 55% / 0.05) 0px, transparent 50%),
+      hsl(var(--card));
+
+    --bg-section-gradient: linear-gradient(180deg,
+        hsl(var(--background)) 0%,
+        hsl(30 30% 96%) 25%,
+        hsl(24 25% 97%) 50%,
+        hsl(30 30% 96%) 75%,
+        hsl(var(--background)) 100%);
+
+    /* Shadow tokens (warm glow + remove blue glow) */
+    --shadow-sm: 0 1px 2px hsl(220 20% 10% / 0.04);
+    --shadow-md: 0 4px 12px hsl(220 20% 10% / 0.08);
+    --shadow-lg: 0 12px 40px hsl(220 20% 10% / 0.12);
+    --shadow-xl: 0 24px 60px hsl(220 20% 10% / 0.16);
+
+    --shadow-glow: 0 0 40px hsl(24 94% 50% / 0.22);
+    --shadow-tab: 0 10px 28px hsl(0 0% 0% / 0.18);
+    --shadow-tab-glow: 0 14px 40px hsl(24 94% 50% / 0.22), 0 10px 28px hsl(0 0% 0% / 0.18);
+    --shadow-icon: 0 4px 12px hsl(24 94% 50% / 0.12);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 24 94% 50%;
+  }
+
+  .dark {
+    --background: 220 25% 7%;
+    --foreground: 220 15% 95%;
+
+    --card: 220 25% 11%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 25% 9%;
+    --popover-foreground: 220 15% 95%;
+
+    /* ✅ OPTION 2 dark */
+    --primary: 32 90% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 22% 16%;
+    --secondary-foreground: 220 15% 90%;
+
+    --muted: 220 22% 14%;
+    --muted-foreground: 220 12% 58%;
+
+    --accent: 24 90% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 22% 18%;
+    --input: 220 22% 18%;
+    --ring: 32 90% 56%;
+
+    /* ✅ Dark gradients (warm, no blue) */
+    --gradient-primary: linear-gradient(135deg,
+        hsl(32 90% 56%) 0%,
+        hsl(24 90% 54%) 55%,
+        hsl(18 85% 50%) 100%);
+
+    --gradient-secondary: linear-gradient(135deg,
+        hsl(40 90% 55%) 0%,
+        hsl(28 90% 54%) 50%,
+        hsl(18 85% 50%) 100%);
+
+    --gradient-warm: linear-gradient(135deg,
+        hsl(32 90% 56%) 0%,
+        hsl(20 85% 52%) 50%,
+        hsl(10 80% 48%) 100%);
+
+    --gradient-cool: linear-gradient(135deg,
+        hsl(30 90% 54%) 0%,
+        hsl(22 85% 50%) 55%,
+        hsl(18 80% 48%) 100%);
+
+    --gradient-vibrant: linear-gradient(135deg,
+        hsl(40 90% 56%) 0%,
+        hsl(24 90% 54%) 50%,
+        hsl(12 80% 50%) 100%);
+
+    --gradient-dark: linear-gradient(135deg, hsl(220, 25%, 6%) 0%, hsl(220, 25%, 12%) 100%);
+
+    --gradient-tab: var(--gradient-primary);
+    --gradient-tab-hover: linear-gradient(135deg,
+        hsl(32 90% 60%) 0%,
+        hsl(24 90% 58%) 55%,
+        hsl(18 85% 54%) 100%);
+
+    /* Dark icon gradients */
+    --gradient-icon-1: linear-gradient(135deg, hsl(24 35% 16%) 0%, hsl(18 35% 14%) 50%, hsl(32 35% 16%) 100%);
+    --gradient-icon-2: linear-gradient(135deg, hsl(32 35% 16%) 0%, hsl(24 35% 14%) 50%, hsl(40 35% 16%) 100%);
+    --gradient-icon-3: linear-gradient(135deg, hsl(18 35% 16%) 0%, hsl(10 35% 14%) 50%, hsl(32 35% 16%) 100%);
+
+    /* Dark mesh updated */
+    --bg-section-mesh:
+      radial-gradient(at 20% 30%, hsl(32 90% 56% / 0.14) 0px, transparent 50%),
+      radial-gradient(at 80% 20%, hsl(24 90% 54% / 0.16) 0px, transparent 50%),
+      radial-gradient(at 40% 80%, hsl(18 85% 50% / 0.10) 0px, transparent 50%),
+      radial-gradient(at 90% 70%, hsl(40 90% 55% / 0.08) 0px, transparent 50%),
+      hsl(var(--card));
+
+    --bg-section-gradient: linear-gradient(180deg,
+        hsl(var(--background)) 0%,
+        hsl(24 20% 10%) 25%,
+        hsl(18 18% 12%) 50%,
+        hsl(24 20% 10%) 75%,
+        hsl(var(--background)) 100%);
+
+    --shadow-glow: 0 0 40px hsl(32 90% 56% / 0.18);
+    --shadow-tab: 0 10px 28px hsl(0 0% 0% / 0.28);
+    --shadow-tab-glow: 0 18px 50px hsl(32 90% 56% / 0.20), 0 10px 28px hsl(0 0% 0% / 0.28);
+    --shadow-icon: 0 4px 12px hsl(32 90% 56% / 0.14);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 32 90% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 32 90% 56%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* DM Sans for all headings and numbers */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+
+  /* Container utilities */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  /* ============================================
+     PREMIUM SECTION BACKGROUNDS
+     ============================================ */
+
+  .section-bg-mesh {
+    @apply relative overflow-hidden;
+    background: var(--bg-section-mesh);
+  }
+
+  .section-bg-gradient {
+    @apply relative;
+    background: var(--bg-section-gradient);
+  }
+
+  .section-bg-accent {
+    @apply relative overflow-hidden;
+    background:
+      radial-gradient(at 0% 50%, hsl(var(--primary) / 0.06) 0px, transparent 50%),
+      radial-gradient(at 100% 50%, hsl(var(--accent) / 0.08) 0px, transparent 50%),
+      linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--background)) 100%);
+  }
+
+  .section-bg-dots {
+    @apply relative;
+    background-color: hsl(var(--card));
+  }
+
+  .section-bg-dots::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background-image: radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.08) 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+
+  .section-bg-warm {
+    @apply relative overflow-hidden;
+    background:
+      radial-gradient(at 20% 50%, hsl(35 90% 55% / 0.05) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsl(350 85% 60% / 0.06) 0px, transparent 50%),
+      hsl(var(--card));
+  }
+
+  .section-bg-dark {
+    @apply relative overflow-hidden;
+    background: var(--gradient-dark);
+    @apply text-white;
+  }
+
+  /* ============================================
+     TYPOGRAPHY - Consistent across all pages
+     ============================================ */
+
+  .heading-display {
+    @apply text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .heading-section {
+    @apply text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .heading-subsection {
+    @apply text-xl sm:text-2xl md:text-3xl font-medium leading-snug;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .text-body {
+    @apply text-lg text-muted-foreground leading-relaxed;
+  }
+
+  .text-body-lg {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+
+  .label-tag {
+    @apply text-sm font-semibold uppercase tracking-wider text-primary;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .stat-number {
+    @apply text-4xl md:text-5xl font-semibold text-foreground mb-1;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .stat-label {
+    @apply text-sm text-muted-foreground uppercase tracking-wider;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  /* ============================================
+     BUTTONS - Premium styling
+     ============================================ */
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300;
+    @apply text-primary-foreground;
+    background: var(--gradient-tab);
+    box-shadow: var(--shadow-tab);
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .btn-primary:hover {
+    background: var(--gradient-tab-hover);
+    box-shadow: var(--shadow-tab-glow);
+    @apply -translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300;
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    @apply border border-border hover:border-primary/30;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .btn-secondary:hover {
+    @apply shadow-md -translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300;
+    @apply border-2 border-primary text-primary hover:text-primary-foreground;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .btn-outline:hover {
+    background: var(--gradient-tab);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200;
+    @apply text-muted-foreground hover:text-foreground hover:bg-secondary;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  /* ============================================
+     CARDS - With subtle gradient effects
+     ============================================ */
+
+  .card-minimal {
+    @apply p-5 md:p-6 rounded-2xl bg-card border border-border;
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .card-glass {
+    @apply p-5 md:p-6 rounded-2xl backdrop-blur-xl;
+    @apply bg-background/60 border border-border/50;
+    @apply shadow-lg;
+  }
+
+  .card-gradient {
+    @apply p-5 md:p-6 rounded-2xl;
+    background: var(--gradient-primary);
+    @apply text-primary-foreground;
+  }
+
+  .card-interactive {
+    @apply p-5 rounded-2xl bg-card border border-border cursor-text;
+    @apply transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* ============================================
+     PREMIUM TAB STYLES - With gradients & glow
+     ============================================ */
+
+  /* Base tab container with gradient background */
+  .tabs-container {
+    @apply inline-flex p-1.5 rounded-2xl;
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--muted)) 100%);
+    @apply border border-border/50 shadow-lg;
+  }
+
+  /* Base tab button */
+  .tab-button {
+    @apply relative px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300;
+    @apply text-muted-foreground;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .tab-button:hover:not(.tab-button-active) {
+    @apply text-foreground bg-background/50;
+  }
+
+  /* Active tab with gradient and glow */
+  .tab-button-active {
+    @apply text-primary-foreground;
+    background: var(--gradient-tab);
+    box-shadow: var(--shadow-tab);
+    @apply transform scale-[1.02];
+  }
+
+  /* Premium Glow Tabs */
+  .tabs-glow {
+    @apply inline-flex gap-2 p-2 rounded-2xl;
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+    @apply border border-border shadow-xl;
+  }
+
+  .tab-glow {
+    @apply relative px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300;
+    @apply text-muted-foreground hover:text-foreground hover:bg-background/50;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .tab-glow-active {
+    @apply text-primary-foreground;
+    background: var(--gradient-tab);
+    box-shadow: var(--shadow-tab-glow);
+    @apply scale-[1.02];
+  }
+
+  /* Premium Pill Tabs */
+  .tabs-pill {
+    @apply inline-flex gap-1 p-1.5 rounded-full;
+    background: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--muted)) 100%);
+    @apply border border-border shadow-lg;
+  }
+
+  .tab-pill {
+    @apply px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-300;
+    @apply text-muted-foreground hover:text-foreground hover:bg-background/50;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .tab-pill-active {
+    @apply text-primary-foreground;
+    background: var(--gradient-tab);
+    box-shadow: var(--shadow-tab);
+  }
+
+  /* Premium Segmented Tabs */
+  .tabs-segmented {
+    @apply inline-flex p-1.5 rounded-2xl;
+    background: linear-gradient(135deg, hsl(var(--muted)) 0%, hsl(var(--secondary)) 100%);
+    @apply border border-border shadow-lg;
+  }
+
+  .tab-segment {
+    @apply relative px-6 py-2.5 text-sm font-medium rounded-xl transition-all duration-300;
+    @apply text-muted-foreground;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .tab-segment:hover:not(.tab-segment-active) {
+    @apply text-foreground bg-background/30;
+  }
+
+  .tab-segment-active {
+    @apply text-foreground bg-background;
+    @apply shadow-lg border border-border;
+  }
+
+  /* Underline tabs with gradient */
+  .tabs-underline {
+    @apply flex gap-1 border-b-2 border-border;
+  }
+
+  .tab-underline {
+    @apply relative px-5 py-3 text-sm font-medium transition-all duration-300;
+    @apply text-muted-foreground hover:text-foreground;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .tab-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-0.5 transition-all duration-300;
+    transform: translateY(1px);
+    background: transparent;
+  }
+
+  .tab-underline-active {
+    @apply text-primary;
+  }
+
+  .tab-underline-active::after {
+    background: var(--gradient-tab);
+  }
+
+  /* ============================================
+     CHIP & BADGE STYLES - With gradient options
+     ============================================ */
+
+  .chip {
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium;
+    @apply bg-secondary text-secondary-foreground border border-border;
+    @apply cursor-pointer transition-all duration-300;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .chip:hover {
+    @apply border-primary/30 shadow-md -translate-y-0.5;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--accent) / 0.1) 100%);
+  }
+
+  .chip-active {
+    @apply text-primary-foreground border-transparent;
+    background: var(--gradient-tab);
+    box-shadow: var(--shadow-tab);
+  }
+
+  /* Premium Partner Badges with gradient */
+  .badge-partner {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold;
+    @apply border transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
+    border-color: hsl(var(--border));
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .badge-partner:hover {
+    @apply shadow-lg -translate-y-0.5;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.08) 0%, hsl(var(--accent) / 0.08) 100%);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+
+  .badge-partner-icon {
+    @apply w-5 h-5 rounded-md flex items-center justify-center;
+    background: var(--gradient-icon-1);
+    box-shadow: var(--shadow-icon);
+  }
+
+  /* ============================================
+     ICON BACKGROUNDS - Multicolor gradients
+     ============================================ */
+
+  .icon-gradient {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center;
+    background: var(--gradient-icon-1);
+    box-shadow: var(--shadow-icon);
+    @apply transition-all duration-300;
+  }
+
+  .icon-gradient:hover {
+    @apply scale-105;
+    box-shadow: var(--shadow-tab);
+  }
+
+  .icon-gradient-sm {
+    @apply w-10 h-10 rounded-lg flex items-center justify-center;
+    background: var(--gradient-icon-1);
+    box-shadow: var(--shadow-icon);
+    @apply transition-all duration-300;
+  }
+
+  .icon-gradient-2 {
+    background: var(--gradient-icon-2);
+  }
+
+  .icon-gradient-3 {
+    background: var(--gradient-icon-3);
+  }
+
+  /* ============================================
+     IMAGE & OVERLAY STYLES
+     ============================================ */
+
+  .image-container {
+    @apply relative overflow-hidden rounded-2xl;
+  }
+
+  .image-container img {
+    @apply w-full h-full object-cover transition-transform duration-500;
+  }
+
+  .image-container:hover img {
+    @apply scale-105;
+  }
+
+  .gradient-overlay {
+    @apply absolute inset-0;
+    background: linear-gradient(to top, hsl(220 20% 10% / 0.8) 0%, transparent 60%);
+  }
+
+  /* ============================================
+     ANIMATED ELEMENTS
+     ============================================ */
+
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300;
+    background: var(--gradient-tab);
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* ============================================
+     STAT & ACCORDION STYLES
+     ============================================ */
+
+  .stat-card {
+    @apply text-center p-5;
+  }
+
+  .accordion-trigger {
+    @apply flex items-center justify-between w-full p-4 text-left;
+    @apply font-medium text-foreground bg-card rounded-xl border border-border;
+    @apply transition-all duration-300 hover:bg-secondary/50 hover:border-primary/20;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  .accordion-content {
+    @apply px-4 pb-4 text-muted-foreground;
+  }
+
+  .tooltip-content {
+    @apply px-3 py-2 text-xs rounded-lg bg-foreground text-background;
+    @apply shadow-lg z-50;
+  }
+
+  /* ============================================
+     SCROLLBAR HIDE UTILITY
+     ============================================ */
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ============================================
+     SMOOTH ANIMATIONS
+     ============================================ */
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
 }
