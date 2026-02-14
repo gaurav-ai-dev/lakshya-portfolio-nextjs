@@ -111,7 +111,7 @@ const CaseStudySummaries = () => {
               <button
                 key={chip.id}
                 onClick={() => setActiveFilter(chip.id)}
-                className={`tab-glow ${activeFilter === chip.id ? 'tab-glow-active' : ''}`}
+                className={`tab-glow text-xs sm:text-sm ${activeFilter === chip.id ? 'tab-glow-active' : ''}`}
               >
                 {chip.label}
               </button>
@@ -159,7 +159,7 @@ const CaseStudySummaries = () => {
                       {featuredStudy.metrics.map((metric, idx) => (
                         <div 
                           key={metric.label} 
-                          className={`bg-gradient-to-r ${idx === 0 ? 'from-blue-500/10 to-purple-500/10' : idx === 1 ? 'from-emerald-500/10 to-cyan-500/10' : 'from-orange-500/10 to-pink-500/10'} rounded-xl p-3 border border-border/50`}
+                          className="bg-secondary/50 rounded-xl p-3 border border-border/50 min-w-[80px]"
                         >
                           <p className="stat-number text-xl text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-tab)' }}>{metric.value}</p>
                           <p className="text-xs text-muted-foreground">{metric.label}</p>
@@ -194,7 +194,7 @@ const CaseStudySummaries = () => {
                   <div className="card-interactive h-full">
                     {/* Image */}
                     <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4">
-                      <Image
+                      <Image 
                         src={study.image} 
                         alt={study.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -207,11 +207,11 @@ const CaseStudySummaries = () => {
                     </div>
 
                     {/* Metrics with gradient backgrounds */}
-                    <div className="flex gap-2 mb-4">
+                     <div className="flex gap-2 mb-4 overflow-hidden">
                       {study.metrics.slice(0, 2).map((metric, idx) => (
                         <div 
                           key={metric.label} 
-                          className={`flex-1 text-center bg-gradient-to-r ${idx === 0 ? 'from-blue-500/10 to-indigo-500/10' : 'from-emerald-500/10 to-cyan-500/10'} rounded-lg py-2 border border-border/50`}
+                          className="flex-1 text-center bg-secondary/50 rounded-lg py-2 border border-border/50"
                         >
                           <p className="stat-number text-lg text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-tab)' }}>{metric.value}</p>
                           <p className="text-[10px] text-muted-foreground truncate px-1">{metric.label}</p>

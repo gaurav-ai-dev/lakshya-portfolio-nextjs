@@ -200,19 +200,19 @@
     --gradient-icon-2: linear-gradient(135deg, hsl(32 35% 16%) 0%, hsl(24 35% 14%) 50%, hsl(40 35% 16%) 100%);
     --gradient-icon-3: linear-gradient(135deg, hsl(18 35% 16%) 0%, hsl(10 35% 14%) 50%, hsl(32 35% 16%) 100%);
 
-    /* Dark mesh updated */
+    /* Dark mesh updated — neutral dark shades, no orange tint */
     --bg-section-mesh:
-      radial-gradient(at 20% 30%, hsl(32 90% 56% / 0.14) 0px, transparent 50%),
-      radial-gradient(at 80% 20%, hsl(24 90% 54% / 0.16) 0px, transparent 50%),
-      radial-gradient(at 40% 80%, hsl(18 85% 50% / 0.10) 0px, transparent 50%),
-      radial-gradient(at 90% 70%, hsl(40 90% 55% / 0.08) 0px, transparent 50%),
+      radial-gradient(at 20% 30%, hsl(220 25% 14% / 0.6) 0px, transparent 50%),
+      radial-gradient(at 80% 20%, hsl(230 20% 16% / 0.5) 0px, transparent 50%),
+      radial-gradient(at 40% 80%, hsl(215 22% 12% / 0.4) 0px, transparent 50%),
+      radial-gradient(at 90% 70%, hsl(225 20% 15% / 0.3) 0px, transparent 50%),
       hsl(var(--card));
 
     --bg-section-gradient: linear-gradient(180deg,
         hsl(var(--background)) 0%,
-        hsl(24 20% 10%) 25%,
-        hsl(18 18% 12%) 50%,
-        hsl(24 20% 10%) 75%,
+        hsl(220 25% 9%) 25%,
+        hsl(225 22% 11%) 50%,
+        hsl(220 25% 9%) 75%,
         hsl(var(--background)) 100%);
 
     --shadow-glow: 0 0 40px hsl(32 90% 56% / 0.18);
@@ -421,7 +421,7 @@
   }
 
   .card-interactive {
-    @apply p-5 rounded-2xl bg-card border border-border cursor-text;
+    @apply p-5 rounded-2xl bg-card border border-border cursor-pointer;
     @apply transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1;
   }
 
@@ -457,7 +457,7 @@
 
   /* Premium Glow Tabs */
   .tabs-glow {
-    @apply inline-flex gap-2 p-2 rounded-2xl;
+    @apply inline-flex flex-wrap gap-2 p-2 rounded-2xl;
     background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
     @apply border border-border shadow-xl;
   }
