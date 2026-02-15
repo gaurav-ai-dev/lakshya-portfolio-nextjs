@@ -5,7 +5,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { blogPosts, getPostBySlug } from "@/data/blogposts";
+import { blogPosts, getPostBySlug } from "@/data/blogPosts";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 interface BlogDetailPageProps {
@@ -95,8 +95,8 @@ const TocItem = ({ heading, activeId }: { heading: { id: string; text: string };
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }}
     className={`block w-full text-left text-sm py-1.5 px-3 rounded-lg transition-all duration-200 ${activeId === heading.id
-        ? 'text-primary font-medium bg-primary/8'
-        : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+      ? 'text-primary font-medium bg-primary/8'
+      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
       }`}
   >
     {heading.text}
@@ -386,7 +386,7 @@ const BlogDetailPage = ({ slug }: BlogDetailPageProps) => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link href={`/insights/${rp.id}`} className="block group">
+                  <Link href={`/insights/${rp.slug}`} className="block group">
                     <div className="card-interactive flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch">
                       <div className="relative w-full sm:w-48 md:w-56 flex-shrink-0 aspect-[16/10] sm:aspect-auto rounded-xl overflow-hidden">
                         <Image src={rp.image} alt={rp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

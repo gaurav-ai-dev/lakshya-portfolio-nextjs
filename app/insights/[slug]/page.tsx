@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { blogPosts, getPostBySlug } from "@/data/blogposts";
+import { blogPosts, getPostBySlug } from "@/data/blogPosts";
 import BlogDetailPage from "./BlogDetailPage";
 
 const normalize = (s: string) =>

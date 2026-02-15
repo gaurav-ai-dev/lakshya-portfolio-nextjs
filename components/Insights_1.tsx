@@ -5,12 +5,7 @@ import Link from "next/link";
 import { useState, useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import insightsHero from "@/assets/insights-hero.jpg";
-import servicesAnalytics from "@/assets/services-analytics.jpg";
-import servicesAdvertising from "@/assets/services-advertising.jpg";
-import servicesStrategy from "@/assets/services-strategy.jpg";
-import caseStudy1 from "@/assets/case-study-1.jpg";
-import caseStudy2 from "@/assets/case-study-2.jpg";
+import { blogPosts } from "@/data/blogPosts";
 import Image from "next/image";
 
 const filterChips = [
@@ -24,38 +19,8 @@ const filterChips = [
     { id: 'dtc', label: 'DTC' },
 ];
 
-const featuredPosts = [
-    {
-        id: 1,
-        category: "Attribution",
-        tags: ['attribution', 'strategy'],
-        title: "The Death of Third-Party Cookies: What It Means for 2024",
-        excerpt: "Third-party cookies are finally going away. Here's what marketers need to know about measurement, targeting, and the new landscape of digital advertising.",
-        image: insightsHero,
-        readTime: "12 min",
-        date: "January 2024",
-    },
-    {
-        id: 2,
-        category: "Creative",
-        tags: ['creative', 'dtc'],
-        title: "Building a Creative Testing System That Scales",
-        excerpt: "How to systematically find winning creative concepts without burning through budget on random tests.",
-        image: servicesAdvertising,
-        readTime: "8 min",
-        date: "December 2023",
-    },
-    {
-        id: 3,
-        category: "Strategy",
-        tags: ['strategy', 'scaling'],
-        title: "Why ROAS is a Terrible North Star Metric",
-        excerpt: "ROAS looks good in reports but it's leading you astray. Here's what to optimize for instead.",
-        image: servicesAnalytics,
-        readTime: "6 min",
-        date: "November 2023",
-    },
-];
+// Use the first 3 posts from blogPosts as featured
+const featuredPosts = blogPosts.slice(0, 3);
 
 const trendingPosts = [
     { id: 7, title: "iOS 18 Privacy Changes: Early Impact Data", category: "Attribution", readTime: "5 min" },
@@ -63,13 +28,8 @@ const trendingPosts = [
     { id: 9, title: "The Rise of Creative Automation Tools", category: "Creative", readTime: "6 min" },
 ];
 
-const posts = [
-    { id: 2, category: "Creative", tags: ['creative', 'dtc'], title: "Building a Creative Testing System That Scales", excerpt: "How to systematically find winning creative concepts without burning through budget on random tests.", image: servicesAdvertising, readTime: "8 min", date: "December 2023" },
-    { id: 3, category: "Strategy", tags: ['strategy', 'scaling'], title: "Why ROAS is a Terrible North Star Metric", excerpt: "ROAS looks good in reports but it's leading you astray. Here's what to optimize for instead.", image: servicesAnalytics, readTime: "6 min", date: "November 2023" },
-    { id: 4, category: "Attribution", tags: ['attribution', 'b2b'], title: "MMM vs MTA: When to Use Each", excerpt: "Media Mix Modeling and Multi-Touch Attribution serve different purposes. Here's how to think about them.", image: servicesStrategy, readTime: "10 min", date: "October 2023" },
-    { id: 5, category: "CRO", tags: ['cro', 'dtc'], title: "Landing Page Optimization: The 80/20", excerpt: "Most CRO advice is noise. Here are the changes that actually move the needle.", image: caseStudy1, readTime: "7 min", date: "September 2023" },
-    { id: 6, category: "Scaling", tags: ['scaling', 'strategy'], title: "When to Go Broad vs. Narrow in Meta", excerpt: "The eternal targeting debate. Here's a framework for deciding based on your stage and goals.", image: caseStudy2, readTime: "9 min", date: "August 2023" },
-];
+// Use all posts from blogPosts
+const posts = blogPosts;
 
 const InsightsPage = () => {
     const [activeFilter, setActiveFilter] = useState('all');
@@ -161,7 +121,7 @@ const InsightsPage = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
                                 >
-                                    <Link href={`/insights/${fp.id}`} className="block group">
+                                    <Link href={`/insights/${fp.slug}`} className="block group">
                                         <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                                             <div className="aspect-[16/10]">
                                                 <Image src={fp.image} alt={fp.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -210,7 +170,7 @@ const InsightsPage = () => {
                                             transition={{ duration: 0.3, delay: index * 0.05 }}
                                             className="group"
                                         >
-                                            <Link href={`/insights/${post.id}`}>
+                                            <Link href={`/insights/${post.slug}`}>
                                                 <div className="card-interactive h-full">
                                                     <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4">
                                                         <Image src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
