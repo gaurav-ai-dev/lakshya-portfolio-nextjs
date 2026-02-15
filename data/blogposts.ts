@@ -21,6 +21,12 @@ export interface BlogPost {
         type: "paragraph" | "heading";
         text: string;
     }>;
+    // SEO Metadata
+    metaTitle?: string; // Custom SEO title (defaults to title if not provided)
+    metaDescription?: string; // Custom SEO description (defaults to excerpt if not provided)
+    keywords?: string[]; // SEO keywords
+    publishedTime: string; // ISO date string for article:published_time
+    modifiedTime?: string; // ISO date string for article:modified_time
 }
 
 export const blogPosts: BlogPost[] = [
@@ -35,6 +41,8 @@ export const blogPosts: BlogPost[] = [
         readTime: "12 min",
         date: "January 2024",
         author: "Alex Morgan",
+        keywords: ['third-party cookies', 'digital advertising', 'attribution', 'privacy', 'marketing measurement', 'first-party data'],
+        publishedTime: "2024-01-15T00:00:00.000Z",
         content: [
             {
                 type: "paragraph",
@@ -93,6 +101,8 @@ export const blogPosts: BlogPost[] = [
         readTime: "8 min",
         date: "December 2023",
         author: "Alex Morgan",
+        keywords: ['creative testing', 'paid social', 'ad creative', 'DTC marketing', 'testing framework', 'creative strategy'],
+        publishedTime: "2023-12-10T00:00:00.000Z",
         content: [
             { type: "paragraph", text: "Creative is the single biggest lever in paid social advertising. Yet most brands approach creative testing with a spray-and-pray mentality — launching dozens of variations with no clear hypothesis or learning framework." },
             { type: "heading", text: "The Framework" },
@@ -113,6 +123,8 @@ export const blogPosts: BlogPost[] = [
         readTime: "6 min",
         date: "November 2023",
         author: "Alex Morgan",
+        keywords: ['ROAS', 'marketing metrics', 'performance marketing', 'LTV', 'customer acquisition', 'marketing strategy'],
+        publishedTime: "2023-11-20T00:00:00.000Z",
         content: [
             { type: "paragraph", text: "Return on ad spend (ROAS) is the most commonly reported metric in performance marketing. It's also one of the most misleading. Here's why optimizing for ROAS alone can actually hurt your business growth." },
             { type: "heading", text: "The ROAS Trap" },
@@ -132,6 +144,8 @@ export const blogPosts: BlogPost[] = [
         readTime: "10 min",
         date: "October 2023",
         author: "Alex Morgan",
+        keywords: ['media mix modeling', 'multi-touch attribution', 'marketing attribution', 'measurement', 'analytics', 'MMM', 'MTA'],
+        publishedTime: "2023-10-15T00:00:00.000Z",
         content: [
             { type: "paragraph", text: "The measurement landscape has never been more complex. With the deprecation of third-party cookies and increasing privacy regulations, marketers are turning to two complementary approaches: Media Mix Modeling (MMM) and Multi-Touch Attribution (MTA)." },
             { type: "heading", text: "Media Mix Modeling" },
@@ -151,6 +165,8 @@ export const blogPosts: BlogPost[] = [
         readTime: "7 min",
         date: "September 2023",
         author: "Alex Morgan",
+        keywords: ['conversion rate optimization', 'CRO', 'landing pages', 'page speed', 'message match', 'conversion optimization'],
+        publishedTime: "2023-09-10T00:00:00.000Z",
         content: [
             { type: "paragraph", text: "Conversion rate optimization has become an industry unto itself, with thousands of blog posts offering contradictory advice about button colors and headline formulas. Here's what actually matters when optimizing landing pages for performance marketing." },
             { type: "heading", text: "Message Match" },
@@ -170,6 +186,8 @@ export const blogPosts: BlogPost[] = [
         readTime: "9 min",
         date: "August 2023",
         author: "Alex Morgan",
+        keywords: ['Meta ads', 'Facebook advertising', 'targeting strategy', 'Advantage+', 'ad targeting', 'scaling ads'],
+        publishedTime: "2023-08-15T00:00:00.000Z",
         content: [
             { type: "paragraph", text: "One of the most common questions in Meta advertising is whether to use broad or narrow targeting. The answer, as with most things in marketing, is: it depends. But there's a clear framework for making this decision." },
             { type: "heading", text: "The Spending Threshold" },
