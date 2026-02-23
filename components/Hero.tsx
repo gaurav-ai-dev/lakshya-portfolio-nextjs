@@ -29,8 +29,8 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={heroImage} 
-          alt="Marketing Analytics Dashboard" 
+          src={heroImage}
+          alt="Marketing Analytics Dashboard"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/60" />
@@ -44,7 +44,7 @@ const Hero = () => {
             transition={{ duration: 0.7 }}
           >
             {/* Status Badge */}
-            <motion.div 
+            {/* <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -59,30 +59,30 @@ const Hero = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
               <span className="text-xs font-medium text-primary">Available for Strategic Partnerships</span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Main Headline */}
             <h1 className="heading-display mb-5 text-balance">
-              I help brands turn{" "}
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-tab)' }}>ad spend</span> into{" "}
-              <span className="italic font-medium">measurable growth</span>
+              Expert SEO Freelancer   {" "}
+              <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-tab)' }}>in USA</span> – Strategic Organic{" "}
+              <span className="italic font-medium">Growth by Lakshya Pareek</span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-body-lg max-w-lg mb-8">
-              Senior Performance Marketing Manager with 8+ years of experience building 
-              profitable acquisition systems for DTC, B2B SaaS, and service brands.
+              8 Years of Expertise in Technical SEO, Content Strategy, and Digital Marketing. I help US-based businesses dominate SERPs and drive measurable ROI through data-backed SEO frameworks.
+
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <Link href="/contact" className="btn-primary gap-2 px-6 py-3">
-                Let's Work Together
+                Get My Free SEO Strategy Call
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/case-studies" className="btn-secondary gap-2 px-6 py-3">
                 <Play className="w-4 h-4" />
-                View Case Studies
+                View My Case Studies
               </Link>
             </div>
 
@@ -135,7 +135,7 @@ const Hero = () => {
                 >
                   <p className="stat-number bg-clip-text text-transparent" style={{ backgroundImage: 'var(--gradient-tab)' }}>{stat.value}</p>
                   <p className="stat-label">{stat.label}</p>
-                  
+
                   {/* Tooltip on hover */}
                   {activeTooltip === index && (
                     <motion.div
@@ -146,7 +146,7 @@ const Hero = () => {
                       {stat.tooltip}
                     </motion.div>
                   )}
-                  
+
                   {/* Hover indicator */}
                   <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-primary/30 group-hover:bg-primary transition-colors duration-300" />
                 </motion.div>
@@ -163,8 +163,8 @@ const Hero = () => {
           className="lg:hidden grid grid-cols-2 sm:grid-cols-4 gap-3 pb-10"
         >
           {stats.map((stat, index) => (
-            <motion.div 
-              key={stat.label} 
+            <motion.div
+              key={stat.label}
               className="card-glass p-4 text-center relative"
               onClick={() => setActiveTooltip(activeTooltip === index ? null : index)}
               whileTap={{ scale: 0.98 }}
@@ -186,7 +186,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
@@ -200,7 +200,7 @@ const Hero = () => {
           <span className="text-xs font-medium uppercase tracking-wider">Scroll</span>
           <ChevronDown className="w-4 h-4" />
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 };

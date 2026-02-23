@@ -15,15 +15,15 @@ const CTASection = () => {
     <section className="section-padding relative overflow-hidden" style={{ background: 'var(--gradient-dark)' }}>
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-40">
-        <div 
+        <div
           className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle, hsl(230 85% 55% / 0.3) 0%, transparent 70%)' }}
         />
-        <div 
+        <div
           className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl"
           style={{ background: 'radial-gradient(circle, hsl(260 75% 58% / 0.25) 0%, transparent 70%)' }}
         />
-        <div 
+        <div
           className="absolute top-1/2 left-1/2 w-64 h-64 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
           style={{ background: 'radial-gradient(circle, hsl(280 70% 55% / 0.2) 0%, transparent 70%)' }}
         />
@@ -39,30 +39,30 @@ const CTASection = () => {
             <span className="text-xs font-semibold uppercase tracking-wider text-primary mb-3 block">
               Ready to Start?
             </span>
-            <h2 
-              className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-white" 
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-4 text-white"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Let's build profitable growth together
+              Ready to Outrank Your Competition in the US Market?
             </h2>
             <p className="text-white/70 mb-8 text-lg">
-              Whether you're looking to scale your paid acquisition or need strategic guidance 
-              on measurement and attribution, I'm here to help.
+              Don’t let your competitors take your organic market share. Let’s build a sustainable growth engine for your business.
+
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-foreground rounded-xl font-medium transition-all duration-300 shadow-xl hover:shadow-2xl"
                 >
-                  Get in Touch
+                  Book Your 30-Minute Consultation
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Link 
-                  href="/case-studies" 
+                <Link
+                  href="/case-studies"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-white/30 text-white rounded-xl font-medium hover:bg-white/10 transition-all duration-300"
                 >
                   <Calendar className="w-4 h-4" />
@@ -83,15 +83,15 @@ const CTASection = () => {
               borderColor: 'rgba(255,255,255,0.15)'
             }}
           >
-            <h3 
-              className="font-semibold text-xl mb-5 text-white" 
+            <h3
+              className="font-semibold text-xl mb-5 text-white"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
               What happens next?
             </h3>
             <ul className="space-y-4">
               {whatHappensNext.map((item, index) => (
-                <motion.li 
+                <motion.li
                   key={index}
                   initial={{ opacity: 0, x: 10 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -99,7 +99,7 @@ const CTASection = () => {
                   transition={{ delay: 0.1 + index * 0.05 }}
                   className="flex items-start gap-3"
                 >
-                  <div 
+                  <div
                     className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
                     style={{ background: 'var(--gradient-icon-1)' }}
                   >

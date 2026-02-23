@@ -2,12 +2,12 @@ import { Metadata } from "next";
 
 // Site Configuration
 export const siteConfig = {
-    name: "Lakshya Portfolio",
-    title: "Lakshya - Growth Marketing Strategist",
-    description: "Expert growth marketing strategist specializing in performance marketing, creative testing, and data-driven strategies for scaling DTC and B2B brands.",
+    name: "Lakshya Pareek",
+    title: "Expert SEO Freelancer in USA | 8+ Yrs Experience | Lakshya Pareek",
+    description: "Hire Lakshya Pareek, a senior Freelance SEO Consultant in the USA. Specializing in Technical SEO, White-Hat Link Building, and Organic ROI Growth. Get a free audit!",
     url: "https://seofreelancerusa.com",
     author: {
-        name: "Lakshya",
+        name: "Lakshya Pareek",
         email: "hello@lakshya-portfolio.com", // TODO: Update with actual email
         twitter: "@lakshya", // TODO: Update with actual handle
     },
@@ -27,15 +27,14 @@ export const defaultMetadata: Metadata = {
     },
     description: siteConfig.description,
     keywords: [
-        "growth marketing",
-        "performance marketing",
-        "digital marketing",
-        "marketing strategy",
-        "creative testing",
-        "attribution",
-        "DTC marketing",
-        "B2B marketing",
-        "marketing consultant",
+        "SEO Freelancer USA",
+        "Freelance SEO Services",
+        "SEO Consultant USA",
+        "Technical SEO Expert",
+        "White-Hat Link Building",
+        "Organic SEO Growth",
+        "SEO audit",
+        "Lakshya Pareek",
     ],
     authors: [{ name: siteConfig.author.name }],
     creator: siteConfig.author.name,

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
-import { defaultMetadata } from "@/lib/seo.config";
+import { defaultMetadata, siteConfig } from "@/lib/seo.config";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -16,7 +15,18 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = defaultMetadata;
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    ...defaultMetadata,
+    title: {
+      default: siteConfig.title,
+      template: `%s | ${siteConfig.name}`,
+    },
+    alternates: {
+      canonical: siteConfig.url,
+    },
+  };
+}
 
 export default function RootLayout({
   children,
