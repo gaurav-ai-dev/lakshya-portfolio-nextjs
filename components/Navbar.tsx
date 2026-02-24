@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
@@ -38,18 +39,21 @@ const Navbar = () => {
         <div className="section-container">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link
-              href="/"
-              className="text-xl font-bold text-foreground hover:text-primary transition-colors duration-300"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
-            >
-              <motion.span
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-block"
+            <Link href="/" className="flex items-center">
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center"
               >
-                MarketPro
-              </motion.span>
+                <Image
+                  src="/logo1.png"
+                  alt="Logo"
+                  width={200}
+                  height={200}
+                  priority
+                  className="h-14 w-auto"
+                />
+              </motion.div>
             </Link>
 
             {/* Desktop Nav */}
