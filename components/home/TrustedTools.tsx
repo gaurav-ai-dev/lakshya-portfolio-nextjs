@@ -127,12 +127,13 @@ export default function TrustedTools() {
                         className="text-xl md:text-2xl font-semibold text-foreground"
                         style={{ fontFamily: "'DM Sans', sans-serif" }}
                     >
-                        Industry-Leading{" "}
+
+                        Advanced Tech Stack for{" "}
                         <span
                             className="text-transparent bg-clip-text"
                             style={{ backgroundImage: "var(--gradient-tab)" }}
                         >
-                            Tools &amp; Platforms
+                            Superior SEO Performance
                         </span>
                     </h2>
                 </motion.div>

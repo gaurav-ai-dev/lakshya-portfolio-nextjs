@@ -8,11 +8,11 @@ import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
-  { name: "About", href: "/about" },
-  { name: "Case Studies", href: "/case-studies" },
   { name: "Services", href: "/services" },
-  { name: "Process", href: "/process" },
-  { name: "Insights", href: "/insights" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Industries", href: "/process" },
+  { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
 ];
 
 const Navbar = () => {
@@ -81,10 +81,11 @@ const Navbar = () => {
               ))}
 
               <div className="ml-4 flex items-center gap-3">
-                <ThemeToggle />
+                
                 <Link href="/contact" className="btn-primary text-sm px-5 py-2.5">
                   Get in Touch
                 </Link>
+                <ThemeToggle />
               </div>
             </nav>
 

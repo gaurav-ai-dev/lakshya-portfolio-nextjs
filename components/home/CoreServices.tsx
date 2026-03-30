@@ -9,11 +9,12 @@ const rows = [
         index: 0,
         icon: Code2,
         tag: "Technical SEO",
-        title: "Comprehensive Technical SEO Audits & Infrastructure Optimization",
-        body: "I conduct deep-dive audits to eliminate crawl errors, optimize Core Web Vitals, and implement advanced Schema Markup for better search visibility.",
-        features: ["JS Rendering Fixes", "Site Speed Optimization", "Sitemap Architecture"],
+        title: "Advanced Technical SEO & Infrastructure Optimization",
+        body: "A flawless foundation is crucial for dominating US search results. As an experienced SEO expert in USA, I conduct deep-dive audits to eliminate crawl errors, optimize Core Web Vitals, and implement advanced Schema Markup for maximum search visibility.",
+        features: ["JS Rendering Fixes", "Core Web Vitals & Speed", "Sitemap & Architecture"],
         href: "/services#technical-seo",
         imageRight: false,
+        buttonText: "Explore Technical SEO",
         stats: [
             { icon: Zap, value: "98", label: "PageSpeed Score", color: "#22c55e" },
             { icon: BarChart3, value: "3.2s→0.8s", label: "LCP Improved", color: "hsl(var(--primary))" },
@@ -23,15 +24,17 @@ const rows = [
         accentTo: "hsl(var(--accent)/0.10)",
         darkFrom: "hsl(var(--primary)/0.12)",
         darkTo: "hsl(var(--foreground)/0.04)",
+
     },
     {
         index: 1,
         icon: FileText,
-        tag: "Content Strategy",
-        title: "Strategic Content Marketing & Semantic SEO Search Intent",
-        body: "I specialize in Topical Authority. By aligning content with US user search intent, I build E-E-A-T that satisfies both users and search engine algorithms.",
-        features: ["Keyword Mapping", "Competitor Gap Analysis", "E-E-A-T Strategy"],
+        tag: "ON-PAGE & CONTENT",
+        title: "Semantic Content Strategy & On-Page Optimization",
+        body: "I don't just target keywords; I target user intent. By analyzing top US competitors, I optimize your landing pages and build topical authority frameworks that turn your website into an industry resource and drive high-converting traffic.",
+        features: ["Topical Authority Mapping", "Search Intent Optimization", "Content Refresh Strategies"],
         href: "/services#content-seo",
+        buttonText: "Explore Content Strategy",
         imageRight: true,
         stats: [
             { icon: TrendingUp, value: "+340%", label: "Organic Traffic", color: "#22c55e" },
@@ -46,11 +49,12 @@ const rows = [
     {
         index: 2,
         icon: Link2,
-        tag: "Link Building",
-        title: "White-Hat Link Building & Digital PR for USA Brands",
-        body: "My services include manual, White-Hat link acquisition from high-DR, niche-relevant US publications to grow your domain safely without penalty risks.",
-        features: ["Manual Outreach", "Guest Posting", "Toxic Link Audits"],
+        tag: "OFF-PAGE SEO",
+        title: "High-Authority Link Building & Digital PR",
+        body: "Earn trust in the competitive US market. I acquire high-quality, niche-relevant backlinks from authoritative domains to boost your domain rating, outrank established competitors, and secure long-term Page 1 rankings.",
+        features: ["High DR Backlink Outreach", "Competitor Link Gap Analysis", "Local SEO & Citations (US)"],
         href: "/services#link-building",
+        buttonText: "Explore Authority Building",
         imageRight: false,
         stats: [
             { icon: Shield, value: "DR 70+", label: "Avg. Link Quality", color: "#22c55e" },
@@ -234,7 +238,7 @@ function TextBlock({ row }: { row: typeof rows[0] }) {
                 className="inline-flex items-center gap-2 text-sm font-semibold w-fit group"
                 style={{ color: "hsl(var(--primary))" }}
             >
-                Explore this service
+                {row.buttonText}
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
         </div>
@@ -257,6 +261,7 @@ export default function CoreServices() {
                 >
                     <span className="label-tag mb-3 block">Core Services</span>
                     <h2 className="heading-section mb-5">
+
                         Comprehensive SEO Solutions{" "}
                         <span
                             className="text-transparent bg-clip-text"
@@ -266,8 +271,7 @@ export default function CoreServices() {
                         </span>
                     </h2>
                     <p className="text-body-lg max-w-2xl mx-auto">
-                        End-to-end organic growth — from infrastructure fixes to content strategy
-                        and authority building — with measurable outcomes at every step.
+                        Partner with the best SEO freelancer in USA for end-to-end organic growth. From infrastructure fixes to revenue-driving content strategies, I build scalable SEO frameworks with measurable outcomes at every step.
                     </p>
                 </motion.div>
 

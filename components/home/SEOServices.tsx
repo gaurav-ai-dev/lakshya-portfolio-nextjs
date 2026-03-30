@@ -7,18 +7,20 @@ const services = [
     {
         icon: TrendingUp,
         gradientVar: "var(--gradient-icon-1)",
-        tag: "Strategy & Research",
-        title: "Data-Driven SEO Consultant in the USA",
-        body: "As a seasoned SEO specialist, I develop custom organic traffic growth strategies that align with your business KPIs. I focus on high-intent keyword research and topical authority.",
+        tag: "REVENUE-DRIVEN ORGANIC GROWTH",
+        title: "Advanced SEO & Topical Authority",
+        body: "Move beyond simple keywords. I build comprehensive SEO roadmaps focused on Technical Audits, Semantic Content, and High-DR Backlinks that turn organic search into your most profitable channel.",
+        buttonText: "View SEO Roadmap",
         href: "/services#seo-strategy",
         delay: 0.1,
     },
     {
         icon: Code2,
         gradientVar: "var(--gradient-icon-2)",
-        tag: "Technical SEO",
-        title: "Advanced Technical SEO & Site Audits",
-        body: "I provide deep-dive Technical SEO services to optimize your website's infrastructure. From Core Web Vitals to complex schema markup, I ensure your site meets Google's ranking factors.",
+        tag: "BRAND AUTHORITY & ENGAGEMENT",
+        title: "Strategic SMO & Social Positioning",
+        body: "Build a brand that US customers trust. I optimize your social presence across LinkedIn, Instagram, and Twitter to foster community growth, enhance brand awareness, and drive referral traffic.",
+        buttonText: "See Social Strategies",
         href: "/services#technical-seo",
         delay: 0.2,
         featured: true,          // centre card gets an accent glow border
@@ -26,9 +28,10 @@ const services = [
     {
         icon: Shield,
         gradientVar: "var(--gradient-icon-3)",
-        tag: "Link Building",
-        title: "White-Hat SEO & Authority Building",
-        body: "I implement 100% White-Hat SEO techniques to build your Domain Authority (DA) safely via manual outreach to high-DR US publications.",
+        tag: "HIGH-CONVERSION PAID ADS",
+        title: "Performance Marketing & Google/Meta Ads",
+        body: "Stop wasting budget on low-performing ads. I design data-backed PPC funnels with a focus on high ROAS, precision targeting, and continuous A/B testing to ensure every dollar generates revenue.",
+        buttonText: "Audit My Ad Spend",
         href: "/services#link-building",
         delay: 0.3,
     },
@@ -68,17 +71,17 @@ export default function SEOServices() {
                 >
                     <span className="label-tag mb-3 block">What I Offer</span>
                     <h2 className="heading-section mb-4">
-                        Premium Freelance SEO Services{" "}
+                        ## Scalable
+                        {" "}
                         <span
                             className="text-transparent bg-clip-text"
                             style={{ backgroundImage: "var(--gradient-tab)" }}
                         >
-                            Tailored for the US Market
+                            Digital Marketing Solutions for the US Market
                         </span>
                     </h2>
                     <p className="text-body-lg max-w-2xl mx-auto">
-                        End-to-end organic growth — from strategy and audits to authority
-                        building — all delivered with measurable, data-backed results.
+                        End-to-end growth frameworks designed to dominate search, engage social audiences, and maximize paid ROI—all backed by 8+ years of expertise.
                     </p>
                 </motion.div>
 
@@ -146,7 +149,7 @@ export default function SEOServices() {
                                     href={svc.href}
                                     className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-3 transition-all duration-200 mt-auto"
                                 >
-                                    Learn more
+                                    {svc.buttonText}
                                     <ArrowRight className="w-4 h-4" />
                                 </Link>
 

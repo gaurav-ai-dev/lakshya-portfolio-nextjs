@@ -7,18 +7,19 @@ import heroImage from "@/assets/hero-marketing.jpg";
 import Image from "next/image";
 
 const stats = [
-  { value: "$15M+", label: "Ad Spend Managed", tooltip: "Cumulative spend across Meta, Google, TikTok, LinkedIn" },
-  { value: "4.7x", label: "Average ROAS", tooltip: "Measured using server-side conversion tracking" },
-  { value: "50+", label: "Brands Scaled", tooltip: "DTC, B2B SaaS, and service-based businesses" },
-  { value: "8+", label: "Years Experience", tooltip: "Started in 2016, agency → in-house → consulting" },
+  { value: "10M+", label: "ORGANIC CLICKS DRIVEN", tooltip: "Cumulative spend across Meta, Google, TikTok, LinkedIn" },
+  { value: "$5M+", label: "ORGANIC REVENUE GENERATED)", tooltip: "Measured using server-side conversion tracking" },
+  { value: "50+", label: "US BRANDS SCALED", tooltip: "DTC, B2B SaaS, and service-based businesses" },
+  { value: "8+", label: "YEARS SEO EXPERIENCE", tooltip: "Started in 2016, agency → in-house → consulting" },
 ];
+
 
 const partnerBadges = [
   { name: "Google Ads Partner", icon: Search, gradient: "from-blue-500/20 via-green-500/20 to-yellow-500/20" },
   { name: "Meta Business Partner", icon: Facebook, gradient: "from-blue-600/20 via-indigo-500/20 to-purple-500/20" },
-  { name: "TikTok Partner", icon: Video, gradient: "from-pink-500/20 via-red-500/20 to-orange-500/20" },
-  { name: "LinkedIn Partner", icon: Linkedin, gradient: "from-blue-700/20 via-blue-500/20 to-cyan-500/20" },
-  { name: "Shopify Plus", icon: ShoppingBag, gradient: "from-green-500/20 via-emerald-500/20 to-teal-500/20" },
+  { name: "Google Search Console Expert", icon: Video, gradient: "from-pink-500/20 via-red-500/20 to-orange-500/20" },
+  { name: "Google Analytics (GA4) Certified", icon: Linkedin, gradient: "from-blue-700/20 via-blue-500/20 to-cyan-500/20" },
+  { name: "SEMrush Agency Partner", icon: ShoppingBag, gradient: "from-green-500/20 via-emerald-500/20 to-teal-500/20" },
 ];
 
 const Hero = () => {
@@ -63,14 +64,15 @@ const Hero = () => {
 
             {/* Main Headline */}
             <h1 className="heading-display mb-5 text-balance">
-              Expert SEO Freelancer   {" "}
-              <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-tab)' }}>in USA</span> – Strategic Organic{" "}
-              <span className="italic font-medium">Growth by Lakshya Pareek</span>
+              Best SEO Freelancer {" "}
+              <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'var(--gradient-tab)' }}>in USA </span>Data-Driven Organic Growth{" "}
+              {/* <span className="italic font-medium">Growth by Lakshya Pareek</span> */}
             </h1>
 
             {/* Subheadline */}
             <p className="text-body-lg max-w-lg mb-8">
-              8 Years of Expertise in Technical SEO, Content Strategy, and Digital Marketing. I help US-based businesses dominate SERPs and drive measurable ROI through data-backed SEO frameworks.
+              As a dedicated SEO Expert in USA, I help brands dominate search results with 8+ years of technical expertise. Stop chasing traffic start driving revenue through custom-built SEO frameworks.
+
 
             </p>
 
