@@ -71,7 +71,7 @@ export default function SEOServices() {
                 >
                     <span className="label-tag mb-3 block">What I Offer</span>
                     <h2 className="heading-section mb-4">
-                        ## Scalable
+                        # Scalable
                         {" "}
                         <span
                             className="text-transparent bg-clip-text"

@@ -72,6 +72,9 @@ export const defaultMetadata: Metadata = {
             "max-snippet": -1,
         },
     },
+    verification: {
+        google: "f_NxhmP7fkRcylrWP2tKgoShk93sY5kSvD8a193Spdo",
+    },
 };
 
 // Helper function to generate page metadata

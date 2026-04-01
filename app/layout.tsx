@@ -25,6 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: siteConfig.url,
     },
+    verification: {
+      google: "f_NxhmP7fkRcylrWP2tKgoShk93sY5kSvD8a193Spdo",
+    },
   };
 }
 
