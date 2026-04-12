@@ -152,7 +152,7 @@ export function generateBlogMetadata({
     author?: string;
     tags?: string[];
 }): Metadata {
-    const url = `${siteConfig.url}/insights/${slug}`;
+    const url = `${siteConfig.url}/blog/${slug}`;
     const ogImage = image || siteConfig.ogImage;
 
     return {

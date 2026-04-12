@@ -121,7 +121,7 @@ const InsightsPage = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
                                 >
-                                    <Link href={`/insights/${fp.slug}`} className="block group">
+                                    <Link href={`/blog/${fp.slug}`} className="block group">
                                         <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                                             <div className="aspect-[16/10]">
                                                 <Image src={fp.image} alt={fp.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -170,7 +170,7 @@ const InsightsPage = () => {
                                             transition={{ duration: 0.3, delay: index * 0.05 }}
                                             className="group"
                                         >
-                                            <Link href={`/insights/${post.slug}`}>
+                                            <Link href={`/blog/${post.slug}`}>
                                                 <div className="card-interactive h-full">
                                                     <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4">
                                                         <Image src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -209,7 +209,7 @@ const InsightsPage = () => {
                         </h3>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                             {trendingPosts.map((post, idx) => (
-                                <Link key={post.id} href={`/insights/${post.id}`} className="block group">
+                                <Link key={post.id} href={`/blog/${post.slug}`} className="block group">
                                     <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-secondary/50 transition-colors">
                                         <span className="stat-number text-2xl text-transparent bg-clip-text flex-shrink-0" style={{ backgroundImage: 'var(--gradient-tab)', opacity: 0.4 }}>
                                             {String(idx + 1).padStart(2, '0')}

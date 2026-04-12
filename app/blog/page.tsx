@@ -13,10 +13,10 @@ export async function generateMetadata(): Promise<Metadata> {
             "Organic Growth Strategies",
             "Freelance SEO Insights",
         ],
-        alternates: { canonical: "https://seofreelancerusa.com/insights" },
+        alternates: { canonical: "https://seofreelancerusa.com/blog" },
         openGraph: {
             type: "website",
-            url: "https://seofreelancerusa.com/insights",
+            url: "https://seofreelancerusa.com/blog",
             title: "SEO Blog & Insights | Lakshya Pareek",
             description:
                 "Expert SEO guides, technical tips, and organic growth strategies from a senior SEO consultant.",
