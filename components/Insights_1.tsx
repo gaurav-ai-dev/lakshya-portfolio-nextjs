@@ -68,8 +68,8 @@ const InsightsPage = ({ posts }: InsightsPageProps) => {
                 {/* Hero Header */}
                 <section className="pt-32 pb-16 px-6 bg-[#eff4ff] overflow-hidden section-bg-mesh border-b border-[#d3e4fe]/40">
                     <div className="max-w-4xl mx-auto text-center">
-                        <motion.div 
-                            initial={{ opacity: 0, y: 15 }} 
+                        <motion.div
+                            initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="flex flex-col items-center"
                         >
@@ -115,11 +115,10 @@ const InsightsPage = ({ posts }: InsightsPageProps) => {
                                         <button
                                             key={chip.id}
                                             onClick={() => setActiveFilter(chip.id)}
-                                            className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-xl transition-all duration-300 ${
-                                                isActive
-                                                    ? 'text-white scale-[1.02] bg-gradient-to-r from-[#9d4300] to-[#f97316] shadow-md shadow-[#9d4300]/25'
-                                                    : 'text-[#584237] hover:text-[#0b1c30] bg-[#eff4ff]/40 border border-[#d3e4fe]/50 hover:bg-[#eff4ff] hover:border-[#9d4300]/30'
-                                            }`}
+                                            className={`px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-xl transition-all duration-300 ${isActive
+                                                ? 'text-white scale-[1.02] bg-gradient-to-r from-[#9d4300] to-[#f97316] shadow-md shadow-[#9d4300]/25'
+                                                : 'text-[#584237] hover:text-[#0b1c30] bg-[#eff4ff]/40 border border-[#d3e4fe]/50 hover:bg-[#eff4ff] hover:border-[#9d4300]/30'
+                                                }`}
                                         >
                                             {chip.label}
                                         </button>
@@ -140,7 +139,7 @@ const InsightsPage = ({ posts }: InsightsPageProps) => {
                             <h2 className="font-bold text-xs uppercase tracking-widest text-[#0b1c30]">Featured Article</h2>
                         </div>
 
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -198,8 +197,8 @@ const InsightsPage = ({ posts }: InsightsPageProps) => {
                                             </div>
                                             <span className="text-xs font-bold text-[#0b1c30]">By {featuredPost.author}</span>
                                         </div>
-                                        
-                                        <Link 
+
+                                        <Link
                                             href={`/blog/${featuredPost.slug}`}
                                             className="inline-flex items-center gap-2.5 text-xs font-extrabold text-[#9d4300] uppercase tracking-widest group-hover:gap-4 transition-all"
                                         >
@@ -251,17 +250,17 @@ const InsightsPage = ({ posts }: InsightsPageProps) => {
                                                     <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-sm bg-[#eff4ff]">
                                                         {post.featuredImage ? (
                                                             <>
-                                                                <Image 
-                                                                    src={post.featuredImage} 
-                                                                    alt="" 
-                                                                    fill 
-                                                                    className="object-cover blur-xl scale-110 opacity-30 select-none pointer-events-none" 
+                                                                <Image
+                                                                    src={post.featuredImage}
+                                                                    alt=""
+                                                                    fill
+                                                                    className="object-cover blur-xl scale-110 opacity-30 select-none pointer-events-none"
                                                                 />
-                                                                <Image 
-                                                                    src={post.featuredImage} 
-                                                                    alt={post.featuredImageAlt || post.title} 
-                                                                    fill 
-                                                                    className="object-contain transition-transform duration-700 group-hover:scale-103" 
+                                                                <Image
+                                                                    src={post.featuredImage}
+                                                                    alt={post.featuredImageAlt || post.title}
+                                                                    fill
+                                                                    className="object-contain transition-transform duration-700 group-hover:scale-103"
                                                                 />
                                                             </>
                                                         ) : (
@@ -331,7 +330,7 @@ const InsightsPage = ({ posts }: InsightsPageProps) => {
                                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-white/10 mx-auto mb-6 border border-white/10">
                                     <Mail className="w-6 h-6 text-[#f97316]" />
                                 </div>
-                                
+
                                 <span className="text-[10px] font-bold text-[#f97316] tracking-widest uppercase mb-2 block">Newsletter</span>
                                 <h2 className="text-white mt-0 mb-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold font-headline leading-tight tracking-tight">
                                     Get Growth Insights Weekly
@@ -340,8 +339,8 @@ const InsightsPage = ({ posts }: InsightsPageProps) => {
                                     No spam, just actionable insights and high-performance technical SEO frameworks delivered straight to your inbox.
                                 </p>
 
-                                <form 
-                                    onSubmit={(e) => { e.preventDefault(); console.log('Subscribe:', email); }} 
+                                <form
+                                    onSubmit={(e) => { e.preventDefault(); console.log('Subscribe:', email); }}
                                     className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
                                 >
                                     <input
@@ -352,14 +351,14 @@ const InsightsPage = ({ posts }: InsightsPageProps) => {
                                         className="flex-grow px-5 py-4 rounded-xl bg-white/10 border border-white/20 focus:bg-white/20 focus:border-[#f97316] text-white placeholder:text-slate-400 font-bold outline-none transition-all text-sm focus:ring-1 focus:ring-[#f97316]"
                                         required
                                     />
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className="bg-[#f97316] text-white px-8 py-4 rounded-xl font-extrabold text-xs uppercase tracking-widest hover:bg-[#9d4300] transition-all shadow-xl active:scale-95 border-none"
                                     >
                                         Subscribe
                                     </button>
                                 </form>
-                                
+
                                 <p className="text-[10px] text-slate-400 mt-5 font-medium uppercase tracking-wider">
                                     Join 2,500+ growth leaders. Unsubscribe anytime.
                                 </p>
