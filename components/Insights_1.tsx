@@ -5,39 +5,46 @@ import Link from "next/link";
 import { useState, useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { blogPosts } from "@/data/blogPosts";
 import Image from "next/image";
+import type { NormalizedPost } from "@/lib/wordpress";
 
-const filterChips = [
-    { id: 'all', label: 'All' },
-    { id: 'strategy', label: 'Strategy' },
-    { id: 'creative', label: 'Creative Testing' },
-    { id: 'attribution', label: 'Attribution' },
-    { id: 'cro', label: 'CRO' },
-    { id: 'scaling', label: 'Scaling' },
-    { id: 'b2b', label: 'B2B' },
-    { id: 'dtc', label: 'DTC' },
-];
+interface InsightsPageProps {
+    posts: NormalizedPost[];
+}
 
-// Use the first 3 posts from blogPosts as featured
-const featuredPosts = blogPosts.slice(0, 3);
-
-const trendingPosts = [
-    { id: 7, title: "iOS 18 Privacy Changes: Early Impact Data", category: "Attribution", readTime: "5 min" },
-    { id: 8, title: "Meta's New Advantage+ Shopping Campaigns", category: "Strategy", readTime: "7 min" },
-    { id: 9, title: "The Rise of Creative Automation Tools", category: "Creative", readTime: "6 min" },
-];
-
-// Use all posts from blogPosts
-const posts = blogPosts;
-
-const InsightsPage = () => {
+const InsightsPage = ({ posts }: InsightsPageProps) => {
     const [activeFilter, setActiveFilter] = useState('all');
     const [email, setEmail] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
+    // Build filter chips dynamically from post categories and tags
+    const filterChips = useMemo(() => {
+        const categorySet = new Set<string>();
+        posts.forEach(p => {
+            p.categories.forEach(c => {
+                if (c.toLowerCase() !== 'uncategorized') categorySet.add(c);
+            });
+            p.tags.forEach(t => categorySet.add(t));
+        });
+        const chips = [{ id: 'all', label: 'All' }];
+        categorySet.forEach(name => {
+            chips.push({ id: name.toLowerCase(), label: name });
+        });
+        return chips;
+    }, [posts]);
+
+    // Use the first 3 posts as featured
+    const featuredPosts = posts.slice(0, 3);
+
     const filteredPosts = useMemo(() => {
-        let result = activeFilter === 'all' ? posts : posts.filter(p => p.tags.includes(activeFilter));
+        let result = posts;
+        if (activeFilter !== 'all') {
+            const f = activeFilter.toLowerCase();
+            result = result.filter(p =>
+                p.categories.some(c => c.toLowerCase() === f) ||
+                p.tags.some(t => t.toLowerCase() === f)
+            );
+        }
         if (searchQuery.trim()) {
             const q = searchQuery.toLowerCase();
             result = result.filter(p =>
@@ -48,7 +55,7 @@ const InsightsPage = () => {
             );
         }
         return result;
-    }, [activeFilter, searchQuery]);
+    }, [posts, activeFilter, searchQuery]);
 
     return (
         <div className="min-h-screen bg-background text-foreground">
@@ -85,69 +92,81 @@ const InsightsPage = () => {
                                 )}
                             </div>
                         </div>
-                        <div className="flex flex-wrap gap-2 justify-center">
-                            {filterChips.map(chip => (
-                                <button
-                                    key={chip.id}
-                                    onClick={() => setActiveFilter(chip.id)}
-                                    className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${activeFilter === chip.id
-                                        ? 'text-primary-foreground scale-[1.02]'
-                                        : 'text-muted-foreground hover:text-foreground bg-card border border-border hover:bg-secondary/50'
-                                        }`}
-                                    style={activeFilter === chip.id ? { background: 'var(--gradient-tab)', boxShadow: 'var(--shadow-tab-glow)' } : undefined}
-                                >
-                                    {chip.label}
-                                </button>
-                            ))}
-                        </div>
+                        {filterChips.length > 1 && (
+                            <div className="flex flex-wrap gap-2 justify-center">
+                                {filterChips.map(chip => (
+                                    <button
+                                        key={chip.id}
+                                        onClick={() => setActiveFilter(chip.id)}
+                                        className={`px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${activeFilter === chip.id
+                                            ? 'text-primary-foreground scale-[1.02]'
+                                            : 'text-muted-foreground hover:text-foreground bg-card border border-border hover:bg-secondary/50'
+                                            }`}
+                                        style={activeFilter === chip.id ? { background: 'var(--gradient-tab)', boxShadow: 'var(--shadow-tab-glow)' } : undefined}
+                                    >
+                                        {chip.label}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     {/* Featured Posts - 3 cards */}
-                    <div className="section-container pb-12">
-                        <div className="flex items-center justify-between mb-6">
-                            <h2 className="font-semibold text-lg flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gradient-icon-1)' }}>
-                                    <TrendingUp className="w-4 h-4 text-primary" />
-                                </div>
-                                Featured
-                            </h2>
-                        </div>
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {featuredPosts.map((fp, idx) => (
-                                <motion.div
-                                    key={fp.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.1 }}
-                                >
-                                    <Link href={`/blog/${fp.slug}`} className="block group">
-                                        <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                                            <div className="aspect-[16/10]">
-                                                <Image src={fp.image} alt={fp.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                                            </div>
-                                            <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent" />
-                                            <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                                                <span className="px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-sm text-[10px] font-medium text-white border border-white/20 mb-2 inline-block">{fp.category}</span>
-                                                <h3 className="text-lg font-semibold text-white mb-1.5 group-hover:text-primary transition-colors line-clamp-2">{fp.title}</h3>
-                                                <p className="text-white/70 text-xs mb-3 line-clamp-2">{fp.excerpt}</p>
-                                                <div className="flex items-center gap-3 text-[10px] text-white/50">
-                                                    <span>{fp.date}</span>
-                                                    <span>•</span>
-                                                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{fp.readTime}</span>
+                    {featuredPosts.length > 0 && (
+                        <div className="section-container pb-12">
+                            <div className="flex items-center justify-between mb-6">
+                                <h2 className="font-semibold text-lg flex items-center gap-2">
+                                    <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gradient-icon-1)' }}>
+                                        <TrendingUp className="w-4 h-4 text-primary" />
+                                    </div>
+                                    Featured
+                                </h2>
+                            </div>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {featuredPosts.map((fp, idx) => (
+                                    <motion.div
+                                        key={fp.id}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: idx * 0.1 }}
+                                    >
+                                        <Link href={`/blog/${fp.slug}`} className="block group">
+                                            <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                                                <div className="aspect-[16/10]">
+                                                    {fp.featuredImage ? (
+                                                        <Image
+                                                            src={fp.featuredImage}
+                                                            alt={fp.featuredImageAlt || fp.title}
+                                                            width={640}
+                                                            height={400}
+                                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                        />
+                                                    ) : (
+                                                        <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                                                            <span className="text-muted-foreground text-sm">No image</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent" />
+                                                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                                                    <span className="px-2.5 py-1 rounded-lg bg-white/20 backdrop-blur-sm text-[10px] font-medium text-white border border-white/20 mb-2 inline-block">{fp.category}</span>
+                                                    <h3 className="text-lg font-semibold text-white mb-1.5 group-hover:text-primary transition-colors line-clamp-2">{fp.title}</h3>
+                                                    <p className="text-white/70 text-xs mb-3 line-clamp-2">{fp.excerpt}</p>
+                                                    <div className="flex items-center gap-3 text-[10px] text-white/50">
+                                                        <span>{fp.date}</span>
+                                                        <span>•</span>
+                                                        <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{fp.readTime}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </Link>
-                                </motion.div>
-                            ))}
+                                        </Link>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </section>
-
-
-
-
 
                 {/* Posts Grid */}
                 <section className="section-padding section-bg-dots">
@@ -173,7 +192,19 @@ const InsightsPage = () => {
                                             <Link href={`/blog/${post.slug}`}>
                                                 <div className="card-interactive h-full">
                                                     <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4">
-                                                        <Image src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                        {post.featuredImage ? (
+                                                            <Image
+                                                                src={post.featuredImage}
+                                                                alt={post.featuredImageAlt || post.title}
+                                                                width={640}
+                                                                height={400}
+                                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                            />
+                                                        ) : (
+                                                            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                                                                <span className="text-muted-foreground text-sm">No image</span>
+                                                            </div>
+                                                        )}
                                                         <div className="absolute top-3 left-3">
                                                             <span className="px-3 py-1.5 rounded-lg bg-background/90 backdrop-blur-sm text-xs font-medium border border-border/50">{post.category}</span>
                                                         </div>
@@ -197,34 +228,6 @@ const InsightsPage = () => {
                         )}
                     </div>
                 </section>
-
-                {/* Trending Sidebar as horizontal section */}
-                {/* <section className="section-container py-12">
-                    <div className="bg-card rounded-2xl border border-border p-6 shadow-lg">
-                        <h3 className="font-semibold mb-5 flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'var(--gradient-icon-2)' }}>
-                                <TrendingUp className="w-4 h-4 text-primary" />
-                            </div>
-                            Trending Now
-                        </h3>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {trendingPosts.map((post, idx) => (
-                                <Link key={post.id} href={`/blog/${post.slug}`} className="block group">
-                                    <div className="flex items-start gap-3 p-3 rounded-xl hover:bg-secondary/50 transition-colors">
-                                        <span className="stat-number text-2xl text-transparent bg-clip-text flex-shrink-0" style={{ backgroundImage: 'var(--gradient-tab)', opacity: 0.4 }}>
-                                            {String(idx + 1).padStart(2, '0')}
-                                        </span>
-                                        <div>
-                                            <span className="text-xs text-muted-foreground">{post.category}</span>
-                                            <h4 className="font-medium text-sm group-hover:text-primary transition-colors line-clamp-2">{post.title}</h4>
-                                            <span className="text-xs text-muted-foreground flex items-center gap-1 mt-1"><Clock className="w-3 h-3" />{post.readTime}</span>
-                                        </div>
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </section> */}
 
                 {/* Newsletter */}
                 <section className="section-padding section-bg-accent">

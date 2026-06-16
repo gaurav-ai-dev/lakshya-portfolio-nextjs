@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
-import { blogPosts, getPostBySlug } from "@/data/blogPosts";
 import BlogDetailPage from "./BlogDetailPage";
 import { generateBlogMetadata } from "@/lib/seo.config";
+import { getAllPosts, getPostBySlug, formatWPPost, getFeaturedImage } from "@/lib/wordpress";
 import type { Metadata } from "next";
 
 const normalize = (s: string) =>
@@ -11,7 +11,8 @@ const normalize = (s: string) =>
         .replace(/\/+$/, ""); // remove trailing slash
 
 export async function generateStaticParams() {
-    return blogPosts.map((post) => ({ slug: post.slug }));
+    const posts = await getAllPosts();
+    return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({
@@ -21,23 +22,27 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug: rawSlug } = await params;
     const slug = normalize(rawSlug);
-    const post = getPostBySlug(slug);
+    const wpPost = await getPostBySlug(slug);
 
-    if (!post) {
+    if (!wpPost) {
         return {
             title: "Post Not Found",
             description: "The blog post you're looking for doesn't exist.",
         };
     }
 
+    const post = formatWPPost(wpPost);
+    const featuredImage = getFeaturedImage(wpPost);
+
     return generateBlogMetadata({
-        title: post.metaTitle || post.title,
-        description: post.metaDescription || post.excerpt,
+        title: post.title,
+        description: post.excerpt,
         slug: post.slug,
-        publishedTime: post.publishedTime,
-        modifiedTime: post.modifiedTime,
+        image: featuredImage || undefined,
+        publishedTime: post.dateISO,
+        modifiedTime: post.modifiedISO,
         author: post.author,
-        tags: post.keywords || post.tags,
+        tags: [...post.categories, ...post.tags],
     });
 }
 
@@ -48,9 +53,18 @@ export default async function BlogPostPage({
 }) {
     const { slug: rawSlug } = await params;
     const slug = normalize(rawSlug);
-    const post = getPostBySlug(slug);
 
-    if (!post) return notFound();
+    const wpPost = await getPostBySlug(slug);
+    if (!wpPost) return notFound();
 
-    return <BlogDetailPage slug={slug} />;
+    const post = formatWPPost(wpPost);
+
+    // Fetch all posts for related posts sidebar
+    const allPosts = await getAllPosts();
+    const relatedPosts = allPosts
+        .filter(p => p.slug !== post.slug)
+        .slice(0, 4)
+        .map(formatWPPost);
+
+    return <BlogDetailPage post={post} relatedPosts={relatedPosts} />;
 }

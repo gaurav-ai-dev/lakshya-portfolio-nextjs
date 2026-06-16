@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Insights_1 from "@/components/Insights_1";
+import { getAllNormalizedPosts } from "@/lib/wordpress";
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -31,11 +32,11 @@ export async function generateMetadata(): Promise<Metadata> {
         },
     };
 }
-const InsightsPage = () => {
+
+export default async function InsightsPage() {
+    const posts = await getAllNormalizedPosts();
 
     return (
-        <Insights_1 />
+        <Insights_1 posts={posts} />
     );
-};
-
-export default InsightsPage;
+}

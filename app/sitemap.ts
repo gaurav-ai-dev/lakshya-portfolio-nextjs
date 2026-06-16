@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next";
-import { blogPosts } from "@/data/blogPosts";
 import { siteConfig } from "@/lib/seo.config";
+import { getAllPosts, formatWPPost } from "@/lib/wordpress";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = siteConfig.url;
 
     // Static pages with their priorities and change frequencies
@@ -51,15 +51,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ];
 
-    // Dynamic blog post pages
-    const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: post.modifiedTime
-            ? new Date(post.modifiedTime)
-            : new Date(post.publishedTime),
-        changeFrequency: "monthly" as const,
-        priority: 0.7,
-    }));
+    // Dynamic blog post pages from WordPress
+    let blogPages: MetadataRoute.Sitemap = [];
+    try {
+        const wpPosts = await getAllPosts();
+        blogPages = wpPosts.map((wpPost) => {
+            const post = formatWPPost(wpPost);
+            return {
+                url: `${baseUrl}/blog/${post.slug}`,
+                lastModified: new Date(post.modifiedISO),
+                changeFrequency: "monthly" as const,
+                priority: 0.7,
+            };
+        });
+    } catch (error) {
+        // If WordPress API is unavailable, sitemap still works with static pages
+        console.error("Failed to fetch WordPress posts for sitemap:", error);
+    }
 
     return [...staticPages, ...blogPages];
 }
