@@ -1,4 +1,4 @@
-const WP_API_URL = process.env.WORDPRESS_API_URL;
+const WP_API_URL = process.env.WORDPRESS_API_URL || "https://cms.seofreelancerusa.com/wp-json/wp/v2";
 
 // ---------- TypeScript Interfaces ----------
 
